@@ -29,15 +29,15 @@ std::string hasData(std::string s) {
 int main()
 {
   uWS::Hub h;
-
+  
   // Create a Kalman Filter instance
   FusionEKF fusionEKF;
 
-  // used to compute the RMSE later
+  // used to compute the RMSE later  
   Tools tools;
   vector<VectorXd> estimations;
   vector<VectorXd> ground_truth;
-
+  
   h.onMessage([&fusionEKF,&tools,&estimations,&ground_truth](uWS::WebSocket<uWS::SERVER> ws, char *data, size_t length, uWS::OpCode opCode) {
     // "42" at the start of the message means there's a websocket message event.
     // The 4 signifies a websocket message
@@ -90,7 +90,7 @@ int main()
           		iss >> timestamp;
           		meas_package.timestamp_ = timestamp;
           }
-          float x_gt;
+        float x_gt;
     	  float y_gt;
     	  float vx_gt;
     	  float vy_gt;
@@ -125,7 +125,14 @@ int main()
     	  estimations.push_back(estimate);
 
     	  VectorXd RMSE = tools.CalculateRMSE(estimations, ground_truth);
-
+        //DEBUGGING PURPOSE ONLY
+        // if ( RMSE(0) > 0.11 || RMSE(1) > 0.11 || RMSE(2) > 0.52 || RMSE(3) > 0.52 ) {
+        //   cout << "----------------" << endl;
+        //   cout << "rmse_px:" << RMSE(0) << endl;
+        //   cout << "rmse_py:" << RMSE(1) << endl;
+        //   cout << "rmse_vx:" << RMSE(2) << endl;
+        //   cout << "rmse_vy:" << RMSE(3) << endl;
+        // }        
           json msgJson;
           msgJson["estimate_x"] = p_x;
           msgJson["estimate_y"] = p_y;
