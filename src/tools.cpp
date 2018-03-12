@@ -30,6 +30,13 @@ VectorXd Tools::CalculateRMSE(const vector<VectorXd> &estimations,
 
 	rsme = rsme.array().sqrt();
 
+	//DEBUGGING PURPOSE ONLY
+	// cout << "----------------" << endl;
+	// cout << "rmse_x:" << rsme(0) << endl;
+	// cout << "rmse_y:" << rsme(1) << endl;
+	// cout << "rmse_vx:" << rsme(2) << endl;
+	// cout << "rmse_vy:" << rsme(3) << endl;      
+
 	return rsme;
 }
 

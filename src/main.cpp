@@ -124,15 +124,7 @@ int main()
     	  
     	  estimations.push_back(estimate);
 
-    	  VectorXd RMSE = tools.CalculateRMSE(estimations, ground_truth);
-        //DEBUGGING PURPOSE ONLY
-        // if ( RMSE(0) > 0.11 || RMSE(1) > 0.11 || RMSE(2) > 0.52 || RMSE(3) > 0.52 ) {
-        //   cout << "----------------" << endl;
-        //   cout << "rmse_px:" << RMSE(0) << endl;
-        //   cout << "rmse_py:" << RMSE(1) << endl;
-        //   cout << "rmse_vx:" << RMSE(2) << endl;
-        //   cout << "rmse_vy:" << RMSE(3) << endl;
-        // }        
+    	  VectorXd RMSE = tools.CalculateRMSE(estimations, ground_truth);          
           json msgJson;
           msgJson["estimate_x"] = p_x;
           msgJson["estimate_y"] = p_y;
