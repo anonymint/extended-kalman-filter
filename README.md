@@ -1,4 +1,4 @@
-# Extended Kalman Filter Project Starter Code
+# Extended Kalman Filter Project
 
 In this project, we will use extended Kalman filter to will utilize a Kalman filter to estimate the state of a moving object of interest with noisy lidar and radar measurements.
 
